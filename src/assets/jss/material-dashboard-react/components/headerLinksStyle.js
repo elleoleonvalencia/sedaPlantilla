@@ -5,6 +5,7 @@ import {
 } from "assets/jss/material-dashboard-react.js";
 
 import dropdownStyle from "assets/jss/material-dashboard-react/dropdownStyle.js";
+import { NONAME } from "dns";
 
 const headerLinksStyle = theme => ({
   ...dropdownStyle(theme),
@@ -30,6 +31,18 @@ const headerLinksStyle = theme => ({
     ...defaultFont,
     fontSize: "14px",
     margin: "0px"
+  },
+  select_link: {
+    marginRight: '50px',
+    "&:before": {
+      borderBottom: 'none',
+    },
+    "&:after": {
+      borderBottom: 'none',
+    },
+    "&:hover:not($disabled):before,&:before": {
+      borderBottom: 'none !important',
+    },
   },
   buttonLink: {
     [theme.breakpoints.down("sm")]: {
