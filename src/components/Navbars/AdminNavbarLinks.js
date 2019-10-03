@@ -46,24 +46,20 @@ export default function AdminNavbarLinks(props) {
 
   useEffect(
     async () => {
-    const tt = await cubejsApi.load({
-      "measures": [],
-      "timeDimensions": [],
-      "dimensions": [
-        "SymAgricUrbanaPoint.municipio"
-      ],
-      "filters": []
-    })
-    console.log(tt["loadResponse"]["data"])
-    var aux = []
-    tt["loadResponse"]["data"].map((p) =>
-      aux.push(p["SymAgricUrbanaPoint.municipio"])
-    )
-    console.log(aux)
-
-    setMunicipioLista(aux);
-    console.log(municipioLista)
-  },
+      const municipios = await cubejsApi.load({
+        "measures": [],
+        "timeDimensions": [],
+        "dimensions": [
+          "SymAgricUrbanaPoint.municipio"
+        ],
+        "filters": []
+      })
+      var aux = []
+      municipios["loadResponse"]["data"].map((mun) =>
+        aux.push(mun["SymAgricUrbanaPoint.municipio"])
+      )
+      await setMunicipioLista(aux);
+    },
     [props]
   )
 
