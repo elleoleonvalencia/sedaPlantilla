@@ -1,11 +1,9 @@
 import React from "react";
-import classNames from "classnames";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from '@material-ui/core/Select';
 import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
 // @material-ui/icons
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 // core components
@@ -57,11 +55,11 @@ export default function AdminNavbarLinks(props) {
             return selected.join(', ');
           }}
         >
-          <MenuItem value='' disabled>
+          <MenuItem value='' disabled className={classes.dropdownItem}>
             <LocationOnIcon className={classes.icons} style={{ fontSize: 16 }} /> Provincia
           </MenuItem>
           {provincia.map(name => (
-            <MenuItem key={name} value={name}>
+            <MenuItem key={name} value={name} className={classes.dropdownItem}>
               {name}
             </MenuItem>
           ))}
@@ -80,11 +78,11 @@ export default function AdminNavbarLinks(props) {
             return selected.join(', ');
           }}
         >
-          <MenuItem value='' disabled>
+          <MenuItem value='' disabled className={classes.dropdownItem}>
             <LocationOnIcon className={classes.icons} style={{ fontSize: 16 }} /> Municipio
           </MenuItem>
           {municipio.map(name => (
-            <MenuItem key={name} value={name}>
+            <MenuItem key={name} value={name} className={classes.dropdownItem}>
               {name}
             </MenuItem>
           ))}
