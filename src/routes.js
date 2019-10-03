@@ -20,7 +20,7 @@ import Info from "@material-ui/icons/Info";
 import Assessment from "@material-ui/icons/Assessment";
 // core components/views for Admin layout
 import EstadisticaAvanzada from "views/EstadisticaAvanzada/EstadisticaAvanzada.js";
-import UserProfile from "views/UserProfile/UserProfile.js";
+import AcercaDe from "views/AcercaDe/AcercaDe.js";
 
 const dashboardRoutes = [
   {
@@ -36,7 +36,7 @@ const dashboardRoutes = [
     name: "Acerca de...",
     rtlName: "ملف تعريفي للمستخدم",
     icon: Info,
-    component: UserProfile,
+    component: AcercaDe,
     layout: "/admin"
   }
 ];
