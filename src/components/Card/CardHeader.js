@@ -13,7 +13,7 @@ import styles from "assets/jss/material-dashboard-react/components/cardHeaderSty
 const useStyles = makeStyles(styles);
 
 export default function CardHeader(props) {
-  const classes = useStyles();
+  const classes = useStyles(props.color);
   const { className, children, color, plain, stats, icon, ...rest } = props;
   const cardHeaderClasses = classNames({
     [classes.cardHeader]: true,

@@ -20,25 +20,6 @@ import bgImage from "assets/img/sidebar-1.jpg";
 import logo from "assets/img/reactlogo.png";
 let ps;
 
-const switchRoutes = (
-  <Switch>
-    {routes.map((prop, key) => {
-      if (prop.layout === "/admin") {
-        return (
-          <Route
-            path={prop.layout + prop.path}
-            component={prop.component}
-            key={key}
-          />
-        );
-      }
-      return null;
-    })}
-    <Route path="/admin/dashboard" component={Dashboard} />
-    <Redirect from="/admin" to="/admin/dashboard" />
-  </Switch>
-);
-
 const useStyles = makeStyles(styles);
 
 export default function Admin({ ...rest }) {
@@ -110,7 +91,24 @@ export default function Admin({ ...rest }) {
           {...rest}
         />
         <div className={classes.content}>
-          <div className={classes.container}>{switchRoutes}</div>
+          <div className={classes.container}>{
+            <Switch>
+              {routes.map((prop, key) => {
+                if (prop.layout === "/admin") {
+                  return (
+                    <Route
+                      path={prop.layout + prop.path}
+                      render={() => <prop.component color1={color === "blue" ? 'info' : color === "purple" ? 'primary' : color === "green" ? 'success' : color === "orange" ? 'warning' : 'danger'} />}
+                      key={key}
+                    />
+                  );
+                }
+                return null;
+              })
+              }
+              <Route path="/admin/dashboard" component={Dashboard} />
+              <Redirect from="/admin" to="/admin/dashboard" />
+            </Switch>}</div>
         </div>
         <Footer />
         <FixedPlugin
