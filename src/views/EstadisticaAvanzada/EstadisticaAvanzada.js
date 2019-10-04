@@ -9,24 +9,6 @@ import GraficoGeneral from './graficoGeneral';
 import Dropdown from 'dropdown/index.js'
 
 const styles = {
-  typo: {
-    paddingLeft: "25%",
-    marginBottom: "40px",
-    position: "relative"
-  },
-  note: {
-    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-    bottom: "10px",
-    color: "#c0c1c2",
-    display: "block",
-    fontWeight: "400",
-    fontSize: "13px",
-    lineHeight: "13px",
-    left: "0",
-    marginLeft: "20px",
-    position: "absolute",
-    width: "260px"
-  },
   cardCategoryWhite: {
     color: "rgba(255,255,255,.62)",
     margin: "0",
@@ -35,7 +17,7 @@ const styles = {
     marginBottom: "0"
   },
   cardTitleWhite: {
-    color: "#FFFFFF",
+    color: '#FFFFFF',
     marginTop: "0px",
     minHeight: "auto",
     fontWeight: "300",
@@ -49,7 +31,7 @@ const useStyles = makeStyles(styles);
 
 export default function EstadisticaAvanzadaPage(props) {
   const classes = useStyles();
-  
+
   const [measures, setMeasures] = React.useState(["SymAgricUrbanaPoint.count"]);
   const [dimensions, setDimensions] = React.useState(["SymAgricUrbanaPoint.tecnologia"]);
   const [tipoGrafic, setTipoGrafic] = React.useState('');
@@ -66,15 +48,15 @@ export default function EstadisticaAvanzadaPage(props) {
   }
 
   const camposDimensions = async dimensions => {
-    await setDimensions(dimensions )
+    await setDimensions(dimensions)
   }
 
   const tipoGraficFunction = async grafic => {
-    await setTipoGrafic(grafic )
+    await setTipoGrafic(grafic)
   }
   return (
     <Card>
-      <CardHeader color="primary">
+      <CardHeader color={props.color1}>
         <h4 className={classes.cardTitleWhite}>Estadística Avanzada</h4>
         <p className={classes.cardCategoryWhite}>
           En este espacio .......
