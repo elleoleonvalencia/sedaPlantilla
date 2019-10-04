@@ -60,7 +60,7 @@ export default function AdminNavbarLinks(props) {
       )
       await setMunicipioLista(aux);
     },
-    [props]
+    []
   )
 
   const handleChangeP = event => {
