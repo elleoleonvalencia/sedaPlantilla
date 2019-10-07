@@ -13,9 +13,6 @@ import styles from "assets/jss/material-dashboard-react/components/headerLinksSt
 import cubejs from '@cubejs-client/core';
 
 const useStyles = makeStyles(styles);
-const provincia = [
-  'Villa Clara',
-];
 
 const API_URL = "http://192.168.0.10:4000"; // change to your actual endpoint
 
@@ -32,24 +29,50 @@ export default function AdminNavbarLinks(props) {
 
 
   const [municipioLista, setMunicipioLista] = React.useState([]);
+  const [provinciaLista, setProvinciaLista] = React.useState([]);
 
   useEffect(
-    async () => {
-      const municipios = await cubejsApi.load({
-        "measures": [],
-        "timeDimensions": [],
-        "dimensions": [
-          "SymAgricUrbanaPoint.municipio"
-        ],
-        "filters": []
-      })
-      var aux = []
-      municipios["loadResponse"]["data"].map((mun) =>
-        aux.push(mun["SymAgricUrbanaPoint.municipio"])
-      )
-      await setMunicipioLista(aux);
+
+    () => {
+
+      async function asyncrona() {
+
+        const provincias = await cubejsApi.load({
+          "measures": [],
+          "timeDimensions": [],
+          "dimensions": [
+            "SymAgricUrbanaPoint.provincia"
+          ],
+          "filters": []
+        })
+        var auxp = []
+        provincias["loadResponse"]["data"].map((prov) =>
+          auxp.push(prov["SymAgricUrbanaPoint.provincia"])
+        )
+        await setProvinciaLista(auxp);
+
+        const municipios = await cubejsApi.load({
+          "measures": [],
+          "timeDimensions": [],
+          "dimensions": [
+            "SymAgricUrbanaPoint.municipio"
+          ],
+          "filters": []
+        })
+        var auxm = []
+        municipios["loadResponse"]["data"].map((mun) =>
+          auxm.push(mun["SymAgricUrbanaPoint.municipio"])
+        )
+        await setMunicipioLista(auxm);
+
+      }
+
+      asyncrona();
+
     },
+
     []
+
   )
 
   const handleChangeP = event => {
@@ -80,7 +103,7 @@ export default function AdminNavbarLinks(props) {
           <MenuItem value='' disabled className={classes.dropdownItem}>
             <LocationOnIcon className={classes.icons} style={{ fontSize: 16 }} /> Provincia
           </MenuItem>
-          {provincia.map(name => (
+          {provinciaLista.map(name => (
             <MenuItem key={name} value={name} className={classes.dropdownItem}>
               {name}
             </MenuItem>
