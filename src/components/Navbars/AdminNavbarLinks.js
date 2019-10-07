@@ -46,11 +46,11 @@ export default function AdminNavbarLinks(props) {
           ],
           "filters": []
         })
-        var aux = []
+        var auxp = []
         provincias["loadResponse"]["data"].map((prov) =>
-          aux.push(prov["SymAgricUrbanaPoint.provincia"])
+          auxp.push(prov["SymAgricUrbanaPoint.provincia"])
         )
-        await setProvinciaLista(aux);
+        await setProvinciaLista(auxp);
 
         const municipios = await cubejsApi.load({
           "measures": [],
@@ -60,11 +60,11 @@ export default function AdminNavbarLinks(props) {
           ],
           "filters": []
         })
-        var aux = []
+        var auxm = []
         municipios["loadResponse"]["data"].map((mun) =>
-          aux.push(mun["SymAgricUrbanaPoint.municipio"])
+          auxm.push(mun["SymAgricUrbanaPoint.municipio"])
         )
-        await setMunicipioLista(aux);
+        await setMunicipioLista(auxm);
 
       }
 
