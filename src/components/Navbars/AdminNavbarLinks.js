@@ -14,19 +14,6 @@ import { async } from "q";
 import cubejs from '@cubejs-client/core';
 
 const useStyles = makeStyles(styles);
-const provincia = [
-  'Villa Clara',
-];
-const municipio = [
-  'Santa Clara',
-  'Remedios',
-  'Camajuaní',
-  'Placetas',
-  'Sagua La Grande',
-  'Cifuentes',
-  'Corralillo',
-  'Caibarién',
-];
 
 const API_URL = "http://192.168.0.10:4000"; // change to your actual endpoint
 
@@ -43,24 +30,66 @@ export default function AdminNavbarLinks(props) {
 
 
   const [municipioLista, setMunicipioLista] = React.useState([]);
+  const [provinciaLista, setProvinciaLista] = React.useState([]);
 
   useEffect(
-    async () => {
-      const municipios = await cubejsApi.load({
-        "measures": [],
-        "timeDimensions": [],
-        "dimensions": [
-          "SymAgricUrbanaPoint.municipio"
-        ],
-        "filters": []
-      })
-      var aux = []
-      municipios["loadResponse"]["data"].map((mun) =>
-        aux.push(mun["SymAgricUrbanaPoint.municipio"])
-      )
-      await setMunicipioLista(aux);
+
+    // async () => {
+    //   const provincias = await cubejsApi.load({
+    //     "measures": [],
+    //     "timeDimensions": [],
+    //     "dimensions": [
+    //       "SymAgricUrbanaPoint.provincia"
+    //     ],
+    //     "filters": []
+    //   })
+    //   var aux = []
+    //   provincias["loadResponse"]["data"].map((prov) =>
+    //     aux.push(prov["SymAgricUrbanaPoint.provincia"])
+    //   )
+    //   await setProvinciaLista(aux);
+    // },
+
+    () => {
+
+      async function asyncrona() {
+
+        const provincias = await cubejsApi.load({
+          "measures": [],
+          "timeDimensions": [],
+          "dimensions": [
+            "SymAgricUrbanaPoint.provincia"
+          ],
+          "filters": []
+        })
+        var aux = []
+        provincias["loadResponse"]["data"].map((prov) =>
+          aux.push(prov["SymAgricUrbanaPoint.provincia"])
+        )
+        await setProvinciaLista(aux);
+
+        const municipios = await cubejsApi.load({
+          "measures": [],
+          "timeDimensions": [],
+          "dimensions": [
+            "SymAgricUrbanaPoint.municipio"
+          ],
+          "filters": []
+        })
+        var aux = []
+        municipios["loadResponse"]["data"].map((mun) =>
+          aux.push(mun["SymAgricUrbanaPoint.municipio"])
+        )
+        await setMunicipioLista(aux);
+
+      }
+
+      asyncrona();
+
     },
+
     []
+
   )
 
   const handleChangeP = event => {
@@ -91,7 +120,7 @@ export default function AdminNavbarLinks(props) {
           <MenuItem value='' disabled className={classes.dropdownItem}>
             <LocationOnIcon className={classes.icons} style={{ fontSize: 16 }} /> Provincia
           </MenuItem>
-          {provincia.map(name => (
+          {provinciaLista.map(name => (
             <MenuItem key={name} value={name} className={classes.dropdownItem}>
               {name}
             </MenuItem>
