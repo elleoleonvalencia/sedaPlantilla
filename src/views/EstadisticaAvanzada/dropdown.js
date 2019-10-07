@@ -5,27 +5,19 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Input from '@material-ui/core/Input';
 
-const mesure = [
-    'Cantidad',
-    'Área'
-];
-
-const dimension = [
-    'Tecnología', 'Ministerio', 'Consejo Popular', 'Provincia', 'Entidad', 'Productor'
-];
-
-const graf = [
-    'Gráfico de Barras', 'Gráfico de Pastel', 'Gráfico de Líneas', 'Gráfico de Área', 'Tabla'
-];
-
 export default function Dropdown(props) {
 
     const [showGM, setShowGM] = React.useState(true);
     const [showGD, setShowGD] = React.useState(true);
+    const [mesure, setMesure] = React.useState(['SymAgricUrbanaPoint.count']);
+    const [dimension, setDimension] = React.useState(['SymAgricUrbanaPoint.tecnologia']);
+    const [grafico, setGrafico] = React.useState('pie');
 
-    const handleChangeMeasures = async value => {
+    const handleChangeMeasures = async event => {
+        var value = event.target.value;
         if (value.length > 0) {
-            props.camposMeasures(value)
+            setMesure(value)
+            props.camposMeasures(mesure)
             await setShowGM(true)
             props.showGrafic(showGM, showGD)
         } else {
@@ -35,9 +27,11 @@ export default function Dropdown(props) {
         }
     }
 
-    const handleChangeDimensions = async value => {
+    const handleChangeDimensions = async event => {
+        var value = event.target.value;
         if (value.length > 0) {
-            props.camposDimensions(value)
+            setDimension(value)
+            props.camposDimensions(dimension)
             await setShowGD(true)
             props.showGrafic(showGM, showGD)
         } else {
@@ -47,15 +41,16 @@ export default function Dropdown(props) {
         }
     }
 
-    const handleChangeGrafic = value => {
-        props.tipoGrafic(value)
+    const handleChangeGrafic = event => {
+        var value = event.target.value;
+        setGrafico(value)
+        props.tipoGrafic(grafico)
     }
     return (
         <div>
             <Row>
                 <InputLabel htmlFor="select-multiple">Valores (eje Y):</InputLabel>
                 <Select
-                    multiple
                     value={mesure}
                     style={{ width: '50%' }}
                     onChange={handleChangeMeasures}
@@ -70,7 +65,6 @@ export default function Dropdown(props) {
                 <br />
                 <InputLabel htmlFor="select-multiple1">Categorías (eje X):</InputLabel>
                 <Select
-                    multiple
                     value={dimension}
                     style={{ width: '50%' }}
                     onChange={handleChangeDimensions}
@@ -92,8 +86,7 @@ export default function Dropdown(props) {
                 <br />
                 <InputLabel htmlFor="select-multiple2">Tipo de Gráfico:</InputLabel>
                 <Select
-                    multiple
-                    value={graf}
+                    value={grafico}
                     style={{ width: '50%' }}
                     onChange={handleChangeGrafic}
                     input={<Input id="select-multiple2" />}

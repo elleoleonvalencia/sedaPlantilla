@@ -6,7 +6,7 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import GraficoGeneral from './graficoGeneral';
-import Dropdown from './dropdown/dropdown.js'
+import Dropdown from './dropdown'
 
 const styles = {
   cardCategoryWhite: {
@@ -32,9 +32,9 @@ const useStyles = makeStyles(styles);
 export default function EstadisticaAvanzadaPage(props) {
   const classes = useStyles();
 
-  const [measures, setMeasures] = React.useState(["SymAgricUrbanaPoint.count"]);
-  const [dimensions, setDimensions] = React.useState(["SymAgricUrbanaPoint.tecnologia"]);
-  const [tipoGrafic, setTipoGrafic] = React.useState('');
+  const [measures, setMeasures] = React.useState("SymAgricUrbanaPoint.count");
+  const [dimensions, setDimensions] = React.useState("SymAgricUrbanaPoint.tecnologia");
+  const [tipoGrafic, setTipoGrafic] = React.useState('pie');
   const [showGM, setShowGM] = React.useState(true);
   const [showGD, setShowGD] = React.useState(true);
 

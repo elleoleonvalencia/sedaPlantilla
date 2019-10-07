@@ -112,12 +112,15 @@ class gg extends Component {
   )
 
   render() {
+    console.log(this.props.camposMeasures)
+    console.log(this.props.camposDimensions)
+    console.log(this.state.tipoGraficFunction)
     return (
       <QueryRenderer
         query={{
-          "measures": this.props.camposMeasures,
+          "measures": [this.props.camposMeasures],
           "timeDimensions": [],
-          "dimensions": this.props.camposDimensions,
+          "dimensions": [this.props.camposDimensions],
           "filters": [
             {
               "dimension": "SymAgricUrbanaPoint.municipio",
