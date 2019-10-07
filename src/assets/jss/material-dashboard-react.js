@@ -152,7 +152,22 @@ const roseBoxShadow = {
     hexToRgb(roseColor[0]) +
     ",.4)"
 };
-
+const warningCardHeader1 = {
+  background:'transparent', 
+  boxShadow: 'none'
+};
+const successCardHeader1 = {
+  background:'transparent', 
+  boxShadow: 'none'
+};
+const dangerCardHeader1 = {
+  background:'transparent', 
+  boxShadow: 'none'
+};
+const infoCardHeader1 = {
+  background:'transparent', 
+  boxShadow: 'none'
+};
 const warningCardHeader = {
   background:
     "linear-gradient(60deg, " + warningColor[1] + ", " + warningColor[2] + ")",
@@ -286,6 +301,10 @@ export {
   warningBoxShadow,
   dangerBoxShadow,
   roseBoxShadow,
+  warningCardHeader1,
+  successCardHeader1,
+  dangerCardHeader1,
+  infoCardHeader1,
   warningCardHeader,
   successCardHeader,
   dangerCardHeader,

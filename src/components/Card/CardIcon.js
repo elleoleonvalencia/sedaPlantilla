@@ -18,6 +18,7 @@ export default function CardIcon(props) {
   const cardIconClasses = classNames({
     [classes.cardIcon]: true,
     [classes[color + "CardHeader"]]: color,
+    [classes[color + "CardHeader1"]]: color,
     [className]: className !== undefined
   });
   return (

@@ -47,20 +47,19 @@ export default function Dashboard() {
     <div>
       <GridContainer>
         <GridItem xs={12} sm={6} md={3}>
-          <Card>
+          <Card style={{marginBottom:'20px'}}>
             <CardHeader color="warning" stats icon>
-              <CardIcon color="warning" style={{ marginLeft: -30 }} className='card_graf1'>
-                <PieChartOutlinedIcon />
+              <CardIcon color="warning"> 
+                <PieChartOutlinedIcon style={{ color: '#ffa726', width: 50, height: 50 }} />
               </CardIcon>
-              <p className={classes.cardCategory}>Used Space</p>
+              <p className={classes.cardCategory}>Cantidad Total</p>
               <h3 className={classes.cardTitle}>
-                49/50 <small>GB</small>
+                49
               </h3>
             </CardHeader>
             <CardFooter stats>
               <div className={classes.stats}>
-                <Warning />
-                Get more space
+                <span>Huertos</span>
               </div>
             </CardFooter>
           </Card>
@@ -68,8 +67,8 @@ export default function Dashboard() {
         <GridItem xs={12} sm={6} md={3}>
           <Card>
             <CardHeader color="success" stats icon>
-              <CardIcon color="success" style={{ marginLeft: -30 }} className='card_graf1'>
-                <TimelineOutlinedIcon />
+              <CardIcon color="success" >
+                <TimelineOutlinedIcon style={{ color: '#66bb6a', width: 50, height: 50 }} />
               </CardIcon>
               <p className={classes.cardCategory}>Revenue</p>
               <h3 className={classes.cardTitle}>$34,245</h3>
@@ -85,8 +84,8 @@ export default function Dashboard() {
         <GridItem xs={12} sm={6} md={3}>
           <Card>
             <CardHeader color="danger" stats icon>
-              <CardIcon color="danger" style={{ marginLeft: -30 }} className='card_graf1'>
-                <ShowChartOutlinedIcon />
+              <CardIcon color="danger" >
+                <ShowChartOutlinedIcon style={{ color: '#ef5350', width: 50, height: 50 }} />
               </CardIcon>
               <p className={classes.cardCategory}>Fixed Issues</p>
               <h3 className={classes.cardTitle}>75</h3>
@@ -102,8 +101,8 @@ export default function Dashboard() {
         <GridItem xs={12} sm={6} md={3}>
           <Card>
             <CardHeader color="info" stats icon>
-              <CardIcon color="info" style={{ marginLeft: -30 }} className='card_graf1'>
-                <BarChartIcon />
+              <CardIcon color="info">
+                <BarChartIcon style={{ color: '#26c6da', width: 50, height: 50 }} />
               </CardIcon>
               <p className={classes.cardCategory}>Followers</p>
               <h3 className={classes.cardTitle}>+245</h3>
@@ -119,7 +118,7 @@ export default function Dashboard() {
       </GridContainer>
       <GridContainer>
         <GridItem xs={12} sm={12} md={4}>
-          <Card chart>
+          <Card chart style={{marginBottom:'20px'}}>
             <CardHeader color="success">
               <ChartistGraph
                 className="ct-chart"
