@@ -9,23 +9,12 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 // core components
 
 import styles from "assets/jss/material-dashboard-react/components/headerLinksStyle.js";
-import { async } from "q";
 
 import cubejs from '@cubejs-client/core';
 
 const useStyles = makeStyles(styles);
 const provincia = [
   'Villa Clara',
-];
-const municipio = [
-  'Santa Clara',
-  'Remedios',
-  'Camajuaní',
-  'Placetas',
-  'Sagua La Grande',
-  'Cifuentes',
-  'Corralillo',
-  'Caibarién',
 ];
 
 const API_URL = "http://192.168.0.10:4000"; // change to your actual endpoint

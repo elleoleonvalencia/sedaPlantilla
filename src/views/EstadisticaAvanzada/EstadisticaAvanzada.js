@@ -6,7 +6,7 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import GraficoGeneral from './graficoGeneral';
-import Dropdown from 'dropdown/index.js'
+import Dropdown from './dropdown/dropdown.js'
 
 const styles = {
   cardCategoryWhite: {

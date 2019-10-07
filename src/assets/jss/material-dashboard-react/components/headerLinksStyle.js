@@ -5,7 +5,6 @@ import {
 } from "assets/jss/material-dashboard-react.js";
 
 import dropdownStyle from "assets/jss/material-dashboard-react/dropdownStyle.js";
-import { NONAME } from "dns";
 
 const headerLinksStyle = theme => ({
   ...dropdownStyle(theme),
