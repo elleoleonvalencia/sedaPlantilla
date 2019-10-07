@@ -34,22 +34,6 @@ export default function AdminNavbarLinks(props) {
 
   useEffect(
 
-    // async () => {
-    //   const provincias = await cubejsApi.load({
-    //     "measures": [],
-    //     "timeDimensions": [],
-    //     "dimensions": [
-    //       "SymAgricUrbanaPoint.provincia"
-    //     ],
-    //     "filters": []
-    //   })
-    //   var aux = []
-    //   provincias["loadResponse"]["data"].map((prov) =>
-    //     aux.push(prov["SymAgricUrbanaPoint.provincia"])
-    //   )
-    //   await setProvinciaLista(aux);
-    // },
-
     () => {
 
       async function asyncrona() {
