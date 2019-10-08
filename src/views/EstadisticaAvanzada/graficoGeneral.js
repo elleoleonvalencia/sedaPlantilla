@@ -4,6 +4,7 @@ import { QueryRenderer } from '@cubejs-client/react';
 import { Chart, Axis, Tooltip, Geom, Coord, Legend } from 'bizcharts';
 import { Spin, Table } from 'antd';
 
+
 const API_URL = "http://192.168.0.10:4000"; // change to your actual endpoint
 
 const cubejsApi = cubejs(
@@ -14,7 +15,9 @@ const cubejsApi = cubejs(
 class gg extends Component {
 
   state = {
-    tipoGraficFunction: ""
+    tipoGraficFunction: "",
+    camposMeasures: "",
+    camposDimensions: ""
   };
 
   componentWillMount() {
@@ -22,6 +25,10 @@ class gg extends Component {
   }
 
   async componentWillReceiveProps(nextprops) {
+    console.log(nextprops)
+    await this.setState({ camposMeasures: nextprops.camposMeasures })
+    await this.setState({ camposDimensions: nextprops.camposDimensions })
+
     switch (nextprops.tipoGrafic) {
       case "bar":
         this.setState({ tipoGraficFunction: this.barRender })
@@ -112,15 +119,15 @@ class gg extends Component {
   )
 
   render() {
-    console.log(this.props.camposMeasures)
-    console.log(this.props.camposDimensions)
-    console.log(this.state.tipoGraficFunction)
+
+    console.log(this.nextprops)
+
     return (
       <QueryRenderer
         query={{
-          "measures": [this.props.camposMeasures],
+          "measures": this.props.camposMeasures,
           "timeDimensions": [],
-          "dimensions": [this.props.camposDimensions],
+          "dimensions": this.props.camposDimensions,
           "filters": [
             {
               "dimension": "SymAgricUrbanaPoint.municipio",
