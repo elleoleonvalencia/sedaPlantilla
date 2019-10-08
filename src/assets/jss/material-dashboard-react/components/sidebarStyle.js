@@ -129,8 +129,8 @@ const sidebarStyle = theme => ({
       height: "100%",
       content: '""',
       display: "block",
-      background: blackColor,
-      opacity: ".8"
+      background: 'linear-gradient(to bottom, #282828 0%, #111 100%)',
+      opacity: ".85"
     }
   },
   list: {
